@@ -9,7 +9,7 @@ public class Jogo {
         System.out.println("Escolha seu jogador: ");
         System.out.println("1 - Guerreiro");
         System.out.println("2 - Mago");
-        System.out.println("********** Loading ... **********");
+        System.out.println("\n********** Loading ... **********");
         System.out.print("Informe o jogador escolhido: ");
         int escolha = entrada.nextInt();
         entrada.nextLine();
@@ -31,7 +31,7 @@ public class Jogo {
         System.out.println("O Inimigo está iniciando com = " +inimigo.getQuantidadeVida()  + " vidas");
 
         while (jogador.estaVivo() && inimigo.estaVivo()) {
-            System.out.println("Escolha um golpe: ");
+            System.out.println("\nEscolha um golpe: ");
             System.out.println("1 - Golpe Normal");
             System.out.println("2 - Golpe Especial");
             System.out.print("Informe o golpe escolhido: ");

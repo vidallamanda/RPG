@@ -2,11 +2,17 @@ import java.util.Random;
 
 public class Inimigo {
 
+    String[] frases = {"O inimigo conjura uma explosão de energia negra, lançando o jogador para trás com força.",
+            "Prepare-se para enfrentar a ira implacável de um verdadeiro vilão.",
+            "Um enxame de flechas é disparado pelo inimigo, chovendo sobre o jogador",
+            "Com um rugido selvagem, o inimigo avança, desferindo um golpe poderoso com" +
+                    " sua espada em direção ao jogador.",
+            "Com uma risada sinistra, o inimigo convoca uma legião de mortos-vivos para cercar o jogador, prontos para dilacerá-lo."};
     private int quantidadeVida;
     private int poderAtaque;
 
     public Inimigo() {
-        this.quantidadeVida = 50;
+        this.quantidadeVida = 100;
         this.poderAtaque = 0;
     }
 
@@ -33,9 +39,11 @@ public class Inimigo {
             int poderAtaque = random.nextInt(10) + 1;
             int quantVida = jogador.getQuantidadeVida();
 
+            System.out.println("\n********** CONTRA-ATAQUE **********");
+            System.out.println((frases[random.nextInt(frases.length)]));
             if (poderAtaque >= quantVida) {
                 jogador.setQuantidadeVida(0);
-                System.out.println("Você derrotou o Jogador!");
+                System.out.println("Inimigo derrotou o Jogador!");
             } else {
                 jogador.setQuantidadeVida(quantVida - poderAtaque);
                 System.out.println("O inimigo deu " + poderAtaque + " de dano");
@@ -43,7 +51,7 @@ public class Inimigo {
                         " de vida.");
             }
         } else {
-            System.out.println("O jogador já está morto!");
+            System.out.println("\nO jogador já está morto!");
         }
     }
 
