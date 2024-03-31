@@ -21,21 +21,18 @@ public class Mago extends Jogador {
     private Random random = new Random();
 
     public Mago() {
-        super(0);
-        Random random = new Random();
-        int poderAtaque = random.nextInt(10) + 1;
-        setPoderAtaque(poderAtaque);
+        super();
     }
 
     public void atacar(Inimigo inimigo) {
         if (inimigo.estaVivo()) {
-            int poderAtaque = random.nextInt(10);
-            int quantVida = inimigo.getQuantidadeVida();
+            setPoderAtaque(random.nextInt(10));
 
-            System.out.println("\n********** ATAQUE DO MAGO **********");
-            System.out.println(frases[poderAtaque]);
-
-            if (poderAtaque >= quantVida) {
+            System.out.println("********** ATAQUE DO MAGO **********");
+            System.out.println(frases[getPoderAtaque()]);
+            System.out.println("Você causou " + getPoderAtaque() + " de dano no " +
+                    "inimigo.");
+            if (getPoderAtaque() >= inimigo.getQuantidadeVida()) {
                 inimigo.setQuantidadeVida(0);
                 System.out.println("\nVocê derrotou o Inimigo!");
                 System.out.println("  ∧_______∧\n" +
@@ -44,8 +41,7 @@ public class Mago extends Jogador {
                         "(つ ﾉ\n" +
                         "(ノ");
             } else {
-                inimigo.setQuantidadeVida(quantVida - poderAtaque);
-                System.out.println("Você deu " + poderAtaque + " de dano no inimigo.");
+                inimigo.setQuantidadeVida(inimigo.getQuantidadeVida() - getPoderAtaque());
                 System.out.println("O inimigo ficou com " + inimigo.getQuantidadeVida() +
                         " de vida.");
             }
