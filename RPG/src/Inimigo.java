@@ -32,20 +32,18 @@ public class Inimigo {
         this.poderAtaque = poderAtaque;
     }
 
-
-    public void ataqueInimigo(Jogador jogador) {
+    public void atacar(Jogador jogador) {
         if (jogador.estaVivo()) {
             Random random = new Random();
-            int poderAtaque = random.nextInt(10) + 1;
-            int quantVida = jogador.getQuantidadeVida();
+            this.poderAtaque = random.nextInt(10) + 1;
 
             System.out.println("\n********** CONTRA-ATAQUE **********");
             System.out.println((frases[random.nextInt(frases.length)]));
-            if (poderAtaque >= quantVida) {
+            if (poderAtaque >= jogador.getQuantidadeVida()) {
                 jogador.setQuantidadeVida(0);
                 System.out.println("Inimigo derrotou o Jogador!");
             } else {
-                jogador.setQuantidadeVida(quantVida - poderAtaque);
+                jogador.setQuantidadeVida(jogador.getQuantidadeVida() - poderAtaque);
                 System.out.println("O inimigo deu " + poderAtaque + " de dano");
                 System.out.println("O jogador ficou com " + jogador.getQuantidadeVida() +
                         " de vida.");

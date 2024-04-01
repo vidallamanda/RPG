@@ -6,9 +6,9 @@ public class Jogador {
     private int poderAtaque;
     private Random random = new Random();
 
-    public Jogador(int poderAtaque) {
+    public Jogador() {
         this.quantidadeVida = 50;
-        this.poderAtaque = poderAtaque;
+        this.poderAtaque = 0;
     }
 
     public int getQuantidadeVida() {
@@ -28,16 +28,16 @@ public class Jogador {
     }
 
     public void atacar(Inimigo inimigo) {
-    }
+        System.out.println("Você precisa ser um guerreiro ou mago para atacar.");
+    };
 
     public void ataqueEspecial(Inimigo inimigo) {
-        int quantVida = inimigo.getQuantidadeVida();
-
         if (inimigo.estaVivo()) {
-            int poderAtaqueEspecial = random.nextInt(11) + 10;
+            this.poderAtaque = random.nextInt(11) + 10;
 
-            System.out.println("\n********** ATAQUE ESPECIAL **********");
-            if (poderAtaqueEspecial >= quantVida) {
+            System.out.println("********** ATAQUE ESPECIAL **********");
+            System.out.println("O Jogador desferiu um ataque especial, causando " + poderAtaque + " de dano.");
+            if (poderAtaque > inimigo.getQuantidadeVida()) {
                 inimigo.setQuantidadeVida(0);
                 System.out.println("\nVocê derrotou o Inimigo!");
                 System.out.println("  ∧_______∧\n" +
@@ -46,8 +46,7 @@ public class Jogador {
                         "(つ ﾉ\n" +
                         "(ノ");
             } else {
-                inimigo.setQuantidadeVida(quantVida - poderAtaqueEspecial);
-                System.out.println("O Jogador desferiu um ataque especial, causando " + poderAtaqueEspecial + " de dano.");
+                inimigo.setQuantidadeVida(inimigo.getQuantidadeVida() - poderAtaque);
                 System.out.println("O Inimigo ficou com " + inimigo.getQuantidadeVida() +
                         " de vida.");
             }
