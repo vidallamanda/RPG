@@ -28,7 +28,27 @@ public class Jogador {
     }
 
     public void atacar(Inimigo inimigo) {
-        System.out.println("Você precisa ser um guerreiro ou mago para atacar.");
+        if (inimigo.estaVivo()) {
+            this.poderAtaque = random.nextInt(10) + 1;
+
+            System.out.println("********** ATAQUE **********");
+            System.out.println("O Jogador desferiu um ataque, causando " + poderAtaque + " de dano.");
+            if (poderAtaque > inimigo.getQuantidadeVida()) {
+                inimigo.setQuantidadeVida(0);
+                System.out.println("\nVocê derrotou o Inimigo!");
+                System.out.println("  ∧_______∧\n" +
+                        "( ͡° ͜ʖ ͡°)\n" +
+                        "⊂　　つcxxxx{}:::::::::::::::::::::>\n" +
+                        "(つ ﾉ\n" +
+                        "(ノ");
+            } else {
+                inimigo.setQuantidadeVida(inimigo.getQuantidadeVida() - poderAtaque);
+                System.out.println("O Inimigo ficou com " + inimigo.getQuantidadeVida() +
+                        " de vida.");
+            }
+        } else {
+            System.out.println("\nO Inimigo foi derrotado!");
+        }
     };
 
     public void ataqueEspecial(Inimigo inimigo) {
